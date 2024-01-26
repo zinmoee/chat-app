@@ -1,0 +1,5 @@
+export const ActionTypes = {
+  ENTER_CHAT: "ENTER_CHAT",
+  LOAD_MESSAGES: "LOAD_MESSAGES",
+  SEND_MESSAGE: "SEND_MESSAGE",
+};
