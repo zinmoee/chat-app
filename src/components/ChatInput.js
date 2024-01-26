@@ -15,15 +15,18 @@ const ChatInput = ({ onSendMessage }) => {
   };
 
   return (
-    <Form.Group>
+    <Form.Group className="msger-inputarea">
       <Form.Control
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Type your message..."
+        onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+        autoFocus={true}
+        placeholder="Enter your message..."
+        className="msger-input"
       />
-      <Button variant="success" onClick={sendMessage}>
-        Send Message
+      <Button className="msger-send-btn" onClick={sendMessage}>
+        Send
       </Button>
     </Form.Group>
   );

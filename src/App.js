@@ -49,13 +49,17 @@ const ChatApp = () => {
   };
 
   const renderChatContent = () => (
-    <Col xs={12} md={{ span: 6, offset: 3 }}>
-      <div>
-        <strong>{name}</strong>
-      </div>
+    <Col xs={12} md={{ span: 6, offset: 3 }} className="msger">
+      <header class="msger-header">
+        <div class="msger-header-title">
+          <i class="fas fa-comment-alt"></i> SimpleChat
+        </div>
+        <div class="msger-header-options">
+          <span><i class="fas fa-cog"></i></span>
+        </div>
+      </header>
       <div
-        className="border rounded p-3 mt-2"
-        style={{ maxHeight: "300px", overflowY: "auto" }}
+        className="msger-chat border rounded p-3 mt-2"
       >
         {messages.map((msg, index) => (
           <ChatMessage
@@ -72,14 +76,17 @@ const ChatApp = () => {
 
   const renderEnterChat = () => (
     <Col xs={12} md={{ span: 6, offset: 3 }}>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3 name-inputarea">
         <Form.Control
           type="text"
           placeholder="Enter your name"
           onChange={(e) => setTempName(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleEnterChat()}
+          autoFocus={true}
+          className="name-input"
         />
       </Form.Group>
-      <Button variant="primary" onClick={handleEnterChat}>
+      <Button className="enter-chat-btn" onClick={handleEnterChat}>
         Enter Chat
       </Button>
     </Col>
