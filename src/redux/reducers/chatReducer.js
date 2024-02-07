@@ -21,9 +21,11 @@ const chatReducer = (state = initialState, action) => {
         messages: storedMessages,
       };
     case ActionTypes.SEND_MESSAGE:
+      var date = new Date();
       const newMessage = {
         sender: action.payload.sender,
         text: action.payload.text,
+        datetime: date.toString()
       };
       const updatedMessages = [...state.messages, newMessage];
       localStorage.setItem("chatMessages", JSON.stringify(updatedMessages));
